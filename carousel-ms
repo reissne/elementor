@@ -1,0 +1,20 @@
+<script>
+/* Elementor carousel widget (css ID: .active-scroll) active mouse scroll
+* Code from https://xtcetera.com/
+* Updated 12/01/2026
+*/
+
+    jQuery(document).ready(function($) {
+        $('.active-scroll').on('wheel', function (e) {
+            var swiperContainer = document.querySelector('.active-scroll .e-n-carousel');
+            if (swiperContainer && swiperContainer.swiper) {
+                if (e.originalEvent.deltaY < 0) {
+                    swiperContainer.swiper.slidePrev();
+                } else {
+                    swiperContainer.swiper.slideNext();
+                }
+                e.preventDefault();
+            }
+        });
+});
+</script>
