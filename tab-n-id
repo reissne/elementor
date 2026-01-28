@@ -1,0 +1,63 @@
+<script>
+
+/* 01/2026, Elementor (V4) .tab-n-id
+*  Elementor Tabs and Accordion widget active content redirecting navigation
+*  https://xtcetera.com/ 
+*/
+
+window.addEventListener('load', () => {
+setTimeout(function () {
+
+let scrollOffset = 100; /* scroll offset from the top of title */
+
+const tabsAccordionToggleTitles = document.querySelectorAll('.e-n-accordion-item-title, .e-n-tab-title, .elementor-tab-title');
+
+const clickTitleWithAnchor = (anchor) => {
+tabsAccordionToggleTitles.forEach(title => {
+if (title.querySelector(`#${anchor}`) != null || title.id === anchor || (title.closest('details') && title.closest('details').id === anchor)) {
+if (title.getAttribute('aria-expanded') !== 'true' && !title.classList.contains('elementor-active')) title.click();
+let timing = 0;
+let scrollTarget = title;
+if (getComputedStyle(title.closest('.elementor-element')).getPropertyValue('--n-tabs-direction') == 'row') scrollTarget = title.closest('.elementor-element');
+if (title.closest('.e-n-accordion, .elementor-accordion-item, .elementor-toggle-item')) {
+timing = 400;
+}
+setTimeout(function () {
+jQuery('html, body').animate({
+scrollTop: jQuery(scrollTarget).offset().top - scrollOffset,
+}, 'slow');
+}, timing);
+}
+});
+};
+
+document.addEventListener('click', (event) => {
+if (event.target.closest('a') && event.target.closest('a').href.includes('#')) {
+const anchor = extractAnchor(event.target.closest('a').href);
+if (anchor && isAnchorInTitles(anchor, tabsAccordionToggleTitles)) {
+event.preventDefault();
+clickTitleWithAnchor(anchor);
+}
+}
+});
+
+const currentAnchor = extractAnchor(window.location.href);
+if (currentAnchor) {
+clickTitleWithAnchor(currentAnchor);
+}
+
+function extractAnchor(url) {
+const match = url.match(/#([^?]+)/);
+return match ? match[1] : null;
+};
+
+function isAnchorInTitles(anchor, titles) {
+return Array.from(titles).some(title => {
+return title.querySelector(`#${anchor}`) !== null || title.id === anchor || (title.closest('details') && title.closest('details').id === anchor);
+});
+};
+
+}, 300);
+});
+
+</script>
