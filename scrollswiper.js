@@ -1,7 +1,7 @@
 <script>
 
 /* 01/2026, Elementor (V4) .scrollswiper
-*  Elementor Carousel widget enable scrolling mouse-wheel control
+*  Elementor Carousel swiper widget enable mouse-wheel scrolling control
 *  https://xtcetera.com/ 
 */
 
