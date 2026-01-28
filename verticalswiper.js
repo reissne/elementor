@@ -1,8 +1,7 @@
 <script>
 
 /* 01/2026, Elementor (V4) .verticalswiper
-*  Elementor Carousel widget vertical animation
-*  CSS adds content fade-in entrance animation
+*  Elementor Carousel swiper widget has vertical sliding animation
 *  https://xtcetera.com/ 
 */ 
 
