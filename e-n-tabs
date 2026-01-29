@@ -1,0 +1,23 @@
+<script>
+
+/* 01/2026, Elementor (V4) .e-n-tabs
+*  Closes all Elementor tab items by default
+*  https://xtcetera.com/ 
+*/ 
+
+    window.addEventListener('load', function () {
+        setTimeout(() => {
+            document.querySelectorAll('.e-n-tabs').forEach(e => {
+                let activeContent = e.querySelector('.e-con.e-active');
+                if (activeContent) {
+                    activeContent.style.display = 'none';
+                    activeContent.classList.remove('e-active');
+                }
+                e.querySelectorAll('.e-n-tab-title[aria-selected="true"]').forEach(title => 
+                    title.setAttribute('aria-selected', 'false')
+                );
+            });
+        }, 10); 
+    });
+    
+    </script>
